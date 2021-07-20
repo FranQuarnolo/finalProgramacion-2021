@@ -12,7 +12,7 @@ function App() {
         </div>
         <div>
           <a href="/cart">Cart</a>
-          <a href="/singin">Sing In</a>
+          <a href="/singin">SingIn</a>
         </div>
       </header>
       <main>
