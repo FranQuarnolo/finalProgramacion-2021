@@ -50,7 +50,7 @@ export default function ProductoView(props) {
                     {producto.stock > 0 ? (
                       <span className="success">Stock Disponible</span>
                     ) : (
-                      <span className="error">Sin Existencias</span>
+                      <span className="danger">Sin Existencias</span>
                     )}
                   </div>
                 </div>
