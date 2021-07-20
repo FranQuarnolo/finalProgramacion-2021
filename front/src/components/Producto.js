@@ -12,9 +12,6 @@ export default function Producto(props) {
         <a href={`/producto/${producto._id}`}>
           <h2>{producto.name}</h2>
         </a>
-        <p>{producto.description}</p>
-        <p className="pages">Paginas:{producto.pages}</p>
-        <p>Rating:</p>
         <Rating
           rating={producto.rating}
           numReviews={producto.numReviews}
