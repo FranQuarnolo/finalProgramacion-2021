@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from 'react';
 import Producto from "../components/Producto";
 import Loading from "../components/Loading";
 import MessageBox from "../components/MessageBox";
+import { useDispatch, useSelector } from "react-redux";
+import { listarProductos } from "../actions/productoActions";
 
 export default function Home() {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch();
+  const listaProductos = useSelector((state) => state.listaProductos);
+  const { loading, error, productos } = listaProductos;
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get("/api/productos");
-        setLoading(false);
-        setProductos(data);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+    dispatch(listarProductos());
+  }, [dispatch]);
+
   return (
     <div>
       {loading ? (
