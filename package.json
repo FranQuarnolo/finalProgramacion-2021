@@ -1,0 +1,26 @@
+{
+  "name": "finalprogramacion-2021",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch back --exec node --experimental-modules back/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranQuarnolo/finalProgramacion-2021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranQuarnolo/finalProgramacion-2021/issues"
+  },
+  "homepage": "https://github.com/FranQuarnolo/finalProgramacion-2021#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
