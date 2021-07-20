@@ -9,7 +9,7 @@ const data = {
             price:345,
             editorial:'DC',
             rating:4.5,
-            numReviews:10,
+            numReviews:5,
             description:'Comic de Hellblazer tomo #1 de la editorial DC Comics'
         },
         {
@@ -21,7 +21,7 @@ const data = {
             price:380,
             editorial:'DC',
             rating:5,
-            numReviews:12,
+            numReviews:20,
             description:'Comic de Batman año cero de la editorial DC Comics'
         },
         {
@@ -33,7 +33,7 @@ const data = {
             price:425,
             editorial:'DC',
             rating:3.5,
-            numReviews:10,
+            numReviews:15,
             description:'Comic de Batman año uno de la editorial DC Comics'
         },
         {
@@ -45,7 +45,7 @@ const data = {
             price:445,
             editorial:'DC',
             rating:5,
-            numReviews:10,
+            numReviews:13,
             description:'Comic de Hellblazer tomo #2 de la editorial DC Comics'
         },
         {

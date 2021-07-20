@@ -1,4 +1,5 @@
 import React from 'react';
+import Producto from './components/Producto';
 import data from './data'
 
 function App() {
@@ -18,29 +19,8 @@ function App() {
       <main>
         <div className="row center">
           {
-            data.productos.map(productos =>(
-              <div key={productos._id} className="card">
-                <a href={`/productos/${productos._id}`}>
-                  <img className="medium" src={productos.image} alt={productos.name} />
-                </a>
-                <div className="card-body">
-                  <a href={`/productos/${productos._id}`}>
-                    <h2>{productos.name}</h2>
-                  </a>
-                  <p>{productos.description}</p>
-                  <p className="pages">Paginas:{productos.pages}</p>
-                  <p>Rating:</p>
-                  <div className="rating">
-                    <span><i className="fa fa-star"></i></span>
-                    <span><i className="fa fa-star"></i></span>
-                    <span><i className="fa fa-star"></i></span>
-                    <span><i className="fa fa-star"></i></span>
-                    <span><i className="fa fa-star"></i></span>
-                  </div>
-                  <div className="price">${productos.price}</div>
-                  <p className="category">{productos.category}</p>
-                </div>
-              </div>
+            data.productos.map(producto =>(
+              <Producto key={producto._id} producto={producto}></Producto>
             ))
           }
         </div>

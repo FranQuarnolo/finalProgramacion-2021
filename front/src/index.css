@@ -115,3 +115,6 @@ img.medium{
   color: #0a3457 ;
   margin: 0.1rem;
 }
+.rating span :last-child{
+  color: rgba(255, 0, 0, 0.336);
+}
