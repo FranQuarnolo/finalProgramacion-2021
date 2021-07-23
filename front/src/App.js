@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
 import ProductoView from "./pages/ProductoView";
 
@@ -22,6 +23,8 @@ function App() {
         <main>
           <Route path='/' component={Home} exact></Route>
           <Route path='/producto/:id' component={ProductoView}></Route>
+          <Route path="/cart/:id?" component={Carrito}></Route>
+          
         </main>
         <footer className="row center">All right reserved</footer>
       </div>

@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { detallesProducto } from '../actions/productoActions';
-import Loading from '../components/Loading';
-import MessageBox from '../components/MessageBox';
+import { detallesProducto } from "../actions/productoActions";
+import Loading from "../components/Loading";
+import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
 
 export default function ProductoView(props) {
   const dispatch = useDispatch();
   const productoId = props.match.params.id;
+  const [cant, setCant] = useState(1);
   const productoDetalles = useSelector((state) => state.productoDetalles);
   const { loading, error, producto } = productoDetalles;
 
@@ -16,8 +17,9 @@ export default function ProductoView(props) {
     dispatch(detallesProducto(productoId));
   }, [dispatch, productoId]);
 
-
-
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${productoId}?cant=${cant}`);
+  };
   return (
     <div>
       {loading ? (
@@ -26,7 +28,9 @@ export default function ProductoView(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div>
-          <Link className="back" to="/">Regresar</Link>
+          <Link className="back" to="/">
+            Regresar
+          </Link>
           <div className="row top">
             <div className="col-2">
               <img
@@ -67,7 +71,7 @@ export default function ProductoView(props) {
                     <div className="row">
                       <div>Disponibilidad</div>
                       <div>
-                        {producto.countInStock > 0 ? (
+                        {producto.stock > 0 ? (
                           <span className="success">Stock Disponible</span>
                         ) : (
                           <span className="danger">Sin Existencias</span>
@@ -75,9 +79,37 @@ export default function ProductoView(props) {
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <button className="primary block">Añadir al carrito</button>
-                  </li>
+                  {producto.stock > 0 && (
+                    <>
+                      <li>
+                        <div className="row">
+                          <div>Cant</div>
+                          <div>
+                            <select
+                              value={cant}
+                              onChange={(e) => setCant(e.target.value)}
+                            >
+                              {[...Array(producto.stock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <button
+                          onClick={addToCartHandler}
+                          className="primary block"
+                        >
+                          Add to Cart
+                        </button>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
