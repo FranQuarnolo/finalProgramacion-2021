@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
 import ProductoView from "./pages/ProductoView";
+import Login from './pages/Login';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -25,11 +26,12 @@ function App() {
                 <span className="badge">{cartItems.length}</span>
               )}
             </Link>
-            <Link to="/singin">SingIn</Link>
+            <Link to="/login">SingIn</Link>
           </div>
         </header>
         <main>
           <Route path="/" component={Home} exact></Route>
+          <Route path="/login" component={Login}></Route>
           <Route path="/producto/:id" component={ProductoView}></Route>
           <Route path="/cart/:id?" component={Carrito}></Route>
         </main>
