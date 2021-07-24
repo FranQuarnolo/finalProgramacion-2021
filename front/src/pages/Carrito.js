@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../actions/carroActions";
-import  MessageBox  from '../components/MessageBox';
+import { addToCart, removeFromCart } from "../actions/carroActions";
+import MessageBox from "../components/MessageBox";
 
 export default function Carrito(props) {
   const productoId = props.match.params.id;
@@ -19,20 +19,20 @@ export default function Carrito(props) {
   }, [dispatch, productoId, cant]);
 
   const removeFromCartHandler = (id) => {
-    // delete action
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
   };
-  
+
   return (
     <div className="row top">
       <div className="col-2">
         <h1>Carro de compras</h1>
         {cartItems.length === 0 ? (
           <MessageBox>
-            El carro esta vacio. <Link to="/">Ir de compras</Link>
+            Ups! El carro esta vacio. <Link to="/"><strong id="link">Ir de compras</strong></Link>
           </MessageBox>
         ) : (
           <ul>

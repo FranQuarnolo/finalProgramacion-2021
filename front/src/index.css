@@ -93,6 +93,13 @@ button.block {
   width: 100%;
 }
 
+button:disabled{
+  background-color: #1b739fa4;
+  pointer-events: none;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
 .back {
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -227,4 +234,9 @@ img.large {
 }
 .rating span :last-child {
   color: rgba(255, 0, 0, 0.336);
+}
+
+#link{
+  text-decoration: underline;
+  cursor: pointer;
 }
