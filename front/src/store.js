@@ -8,20 +8,21 @@ import {
 import {
   userRegisterReducer,
   userSigninReducer,
-} from './reducers/usuarioReducers';
-
-
+} from "./reducers/usuarioReducers";
 
 const initialState = {
   usuarioLogin: {
-    userInfo: localStorage.getItem('userInfo')
-      ? JSON.parse(localStorage.getItem('userInfo'))
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
       : null,
   },
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {},
   },
 };
 const reducer = combineReducers({
@@ -29,7 +30,7 @@ const reducer = combineReducers({
   productoDetalles: productDetailsReducer,
   cart: cartReducer,
   usuarioLogin: userSigninReducer,
-  usuarioRegistro: userRegisterReducer
+  usuarioRegistro: userRegisterReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

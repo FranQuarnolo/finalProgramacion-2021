@@ -279,3 +279,16 @@ img.large {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Checkout Steps */
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #1b729f;
+  color: #1b729f;
+}
