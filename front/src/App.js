@@ -6,6 +6,7 @@ import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
 import ProductoView from "./pages/ProductoView";
 import Login from "./pages/Login";
+import Registro from './pages/Registro';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -47,13 +48,14 @@ function App() {
                 </ul>
               </div>
             ) : (
-              <Link to="/login">Sign In</Link>
+              <Link to="/signin">Sign In</Link>
             )}
           </div>
         </header>
         <main>
           <Route path="/" component={Home} exact></Route>
-          <Route path="/login" component={Login}></Route>
+          <Route path="/signin" component={Login}></Route>
+          <Route path="/register" component={Registro}></Route>
           <Route path="/producto/:id" component={ProductoView}></Route>
           <Route path="/cart/:id?" component={Carrito}></Route>
         </main>

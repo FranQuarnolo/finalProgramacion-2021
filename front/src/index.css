@@ -173,6 +173,9 @@ img.medium {
   max-width: 29rem;
   width: 100%;
 }
+.loading {
+  display: block !important;
+}
 /* Card */
 img.large {
   margin-left: 15%;
