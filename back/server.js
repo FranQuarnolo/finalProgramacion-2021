@@ -22,6 +22,9 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 app.use('/api/ordenes', orderRouter);
+app.get('/api/config/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
 app.get("/", (req, res) => {
   res.send("Servidor Listo!");
 });
