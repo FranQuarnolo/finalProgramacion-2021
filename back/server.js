@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import userRouter from "./routers/userRouter.js";
 import productRouter from './routers/productoRouter.js';
-
+import orderRouter from './routers/orderRouter.js';
 
 dotenv.config();
 
@@ -18,11 +18,10 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/comicstore", {
 
 app.use("/api/users", userRouter);
 app.use("/api/productos", productRouter);
-
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
-
+app.use('/api/ordenes', orderRouter);
 app.get("/", (req, res) => {
   res.send("Servidor Listo!");
 });
