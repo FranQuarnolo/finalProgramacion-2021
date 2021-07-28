@@ -84,13 +84,20 @@ textarea:hover {
 }
 button:hover {
   color: #fff;
+  background-color: #124f6d;
   text-decoration: underline;
 }
 button.primary {
   background-color: #1b729f;
 }
+button.primary:hover {
+  background-color: #124f6d;
+}
 button.block {
   width: 100%;
+}
+button.block:hover {
+  background-color: #124f6d;
 }
 
 button:disabled{
@@ -192,6 +199,7 @@ img.large {
 }
 .card-body {
   padding: 1rem;
+  width: 90%;
 }
 .card-body > * {
   margin-bottom: 0.5rem;

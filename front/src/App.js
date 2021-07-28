@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import DireccionEnvio from "./pages/DireccionEnvio";
 import MetodoPago from './pages/MetodoPago';
+import RealizarPedido from "./pages/RealizarPedido";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -62,6 +63,7 @@ function App() {
           <Route path="/cart/:id?" component={Carrito}></Route>
           <Route path="/shipping" component={DireccionEnvio}></Route>
           <Route path="/payment" component={MetodoPago}></Route>
+          <Route path="/placeorder" component={RealizarPedido}></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>
