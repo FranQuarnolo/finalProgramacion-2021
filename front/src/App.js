@@ -5,6 +5,7 @@ import { signout } from "./actions/usuarioActions";
 import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
 import HistorialCompra from "./pages/HistorialCompra";
+import Perfil from "./pages/Perfil";
 import Orden from './pages/Orden';
 import ProductoView from "./pages/ProductoView";
 import Login from "./pages/Login";
@@ -46,6 +47,9 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
+                    <Link to="/profile">Perfil</Link>
+                  </li>
+                  <li>
                     <Link to="/orderhistory">Mis compras</Link>
                   </li>
                   <li>
@@ -71,6 +75,7 @@ function App() {
           <Route path="/placeorder" component={RealizarPedido}></Route>
           <Route path="/order/:id" component={Orden}></Route>
           <Route path="/orderhistory" component={HistorialCompra}></Route>
+          <Route path="/profile" component={Perfil}></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>
