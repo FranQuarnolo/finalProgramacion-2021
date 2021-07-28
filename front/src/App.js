@@ -8,6 +8,7 @@ import ProductoView from "./pages/ProductoView";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import DireccionEnvio from "./pages/DireccionEnvio";
+import MetodoPago from './pages/MetodoPago';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -60,6 +61,7 @@ function App() {
           <Route path="/producto/:id" component={ProductoView}></Route>
           <Route path="/cart/:id?" component={Carrito}></Route>
           <Route path="/shipping" component={DireccionEnvio}></Route>
+          <Route path="/payment" component={MetodoPago}></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>
