@@ -105,7 +105,7 @@ export default function ProductoView(props) {
                           onClick={addToCartHandler}
                           className="primary block"
                         >
-                          Add to Cart
+                          Añadir al carro
                         </button>
                       </li>
                     </>

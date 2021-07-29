@@ -34,8 +34,8 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link to="/cart">
-              Carro
+            <Link to="/cart" img>
+              <button id="btn"><img src="./images/icons/cart.png" alt="carrito"></img></button>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
@@ -77,7 +77,7 @@ function App() {
           <Route path="/orderhistory" component={HistorialCompra}></Route>
           <Route path="/profile" component={Perfil}></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">All right reserved ©</footer>
       </div>
     </BrowserRouter>
   );

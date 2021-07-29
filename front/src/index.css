@@ -29,7 +29,7 @@ body {
 
 header {
   grid-area: header;
-  background-color: #1f2932;
+  background-color: #3f5678;
 }
 
 main {
@@ -39,7 +39,7 @@ main {
 
 footer {
   grid-area: footer;
-  background-color: #1f2932;
+  background-color: #3f5678;
   color: #ffffff;
 }
 
@@ -88,7 +88,19 @@ button {
   cursor: pointer;
   color: #000;
 }
+#btn{
+  width: 4vw;
+  height: 5vh;
+  padding: 0;
+  margin: 0;
+  border-style: none;
+  background-color: transparent;
 
+}
+#btn img{
+  width: 4vh;
+  height: auto;
+}
 input:hover,
 select:hover,
 textarea:hover {
@@ -153,9 +165,15 @@ button:disabled {
 /* header */
 
 header a {
+  font-size: 2rem;
   color: white;
   padding: 1rem;
 }
+
+header a:hover {
+  color: #b392a3;
+}
+
 
 a.brand {
   color: white;
@@ -278,13 +296,14 @@ img.large {
   position: absolute;
   display: none;
   right: 0;
-  min-width: 12rem;
+  min-width: 14rem;
   padding: 1rem;
   z-index: 1;
-  background-color: #203040;
+  background-color: #3f5678;
   margin: 0;
   margin-top: 0.4rem;
   border-radius: 0.5rem;
+  color: #b392a3;
 }
 
 .dropdown:hover .dropdown-content {
