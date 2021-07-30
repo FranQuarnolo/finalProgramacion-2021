@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { signout } from "./actions/usuarioActions";
+import Privado from './components/Privado';
 import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
 import HistorialCompra from "./pages/HistorialCompra";
@@ -62,6 +63,27 @@ function App() {
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/dashboard">Panel</Link>
+                  </li>
+                  <li>
+                    <Link to="/productlist">Productos</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist">Compras</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Usuarios</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
@@ -75,7 +97,10 @@ function App() {
           <Route path="/placeorder" component={RealizarPedido}></Route>
           <Route path="/order/:id" component={Orden}></Route>
           <Route path="/orderhistory" component={HistorialCompra}></Route>
-          <Route path="/profile" component={Perfil}></Route>
+          <Privado
+            path="/profile"
+            component={Perfil}
+          ></Privado>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>
