@@ -92,7 +92,7 @@ function App() {
           <Route path="/" component={Home} exact></Route>
           <Route path="/signin" component={Login}></Route>
           <Route path="/register" component={Registro}></Route>
-          <Route path="/producto/:id" component={ProductoView}></Route>
+          <Route path="/producto/:id" component={ProductoView} exact></Route>
           <Route path="/cart/:id?" component={Carrito}></Route>
           <Route path="/shipping" component={DireccionEnvio}></Route>
           <Route path="/payment" component={MetodoPago}></Route>

@@ -1,22 +1,44 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { listarProductos } from '../actions/productoActions';
+import { crearProducto, listarProductos } from '../actions/productoActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
+import { PRODUCT_CREATE_RESET } from '../constants/productoConstants';
 
 export default function ProductoListado(props) {
     const listaProductos = useSelector((state) => state.listaProductos);
     const { loading, error, productos } = listaProductos;
+    const crearNuevoProducto = useSelector((state) => state.crearNuevoProducto);
+    const {
+        loading: loadingCreate,
+        error: errorCreate,
+        success: successCreate,
+        producto: createdProduct,
+    } = crearNuevoProducto;
     const dispatch = useDispatch();
     useEffect(() => {
+        if (successCreate) {
+            dispatch({ type: PRODUCT_CREATE_RESET });
+            props.history.push(`/producto/${createdProduct._id}/edit`);
+        }
         dispatch(listarProductos());
-    }, [dispatch]);
+    }, [createdProduct, dispatch, props.history, successCreate]);
     const deleteHandler = () => {
         /// TODO: dispatch delete action
     };
+    const createHandler = () => {
+        dispatch(crearProducto());
+    };
     return (
         <div>
-            <h1>Listado Productos</h1>
+            <div className="row">
+                <h1>Listado Productos</h1>
+                <button type="button" className="primary" onClick={createHandler}>
+                    Crear Producto
+                </button>
+            </div>
+            {loadingCreate && <Loading></Loading>}
+            {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
             {loading ? (
                 <Loading></Loading>
             ) : error ? (

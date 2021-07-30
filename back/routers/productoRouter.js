@@ -2,6 +2,7 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Producto from '../models/productModel.js';
+import { isAdmin, isAuth } from '../utils.js';
 
 const productoRouter = express.Router();
 
@@ -32,6 +33,28 @@ productoRouter.get(
     } else {
       res.status(404).send({ message: 'Producto no encontrado' });
     }
+  })
+);
+
+productoRouter.post(
+  '/',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const producto = new Producto({
+      name: 'Nombre X' + Date.now(),
+      pages: 0,
+      category: 'categoria X',
+      image: '/images/product-1.jpg',
+      price: 0,
+      stock: 0,
+      editorial: "Editorial fantasma",
+      rating: 0,
+      numReviews: 0,
+      description: 'Descripcion de ejemplo',
+    });
+    const createdProduct = await producto.save();
+    res.send({ message: 'Producto Creado Correctamente!', producto: createdProduct });
   })
 );
 
