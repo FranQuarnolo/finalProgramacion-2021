@@ -2,18 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { signout } from "./actions/usuarioActions";
+import Admin from './components/Admin';
 import Privado from './components/Privado';
-import Carrito from "./pages/Carrito";
 import Home from "./pages/Home";
-import HistorialCompra from "./pages/HistorialCompra";
-import Perfil from "./pages/Perfil";
-import Orden from './pages/Orden';
-import ProductoView from "./pages/ProductoView";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
+import Perfil from "./pages/Perfil";
+import ProductoView from "./pages/ProductoView";
+import Carrito from "./pages/Carrito";
+import Orden from './pages/Orden';
 import DireccionEnvio from "./pages/DireccionEnvio";
 import MetodoPago from './pages/MetodoPago';
 import RealizarPedido from "./pages/RealizarPedido";
+import HistorialCompra from "./pages/HistorialCompra";
+import ProductoListado from './pages/ProductoListado';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -101,6 +103,10 @@ function App() {
             path="/profile"
             component={Perfil}
           ></Privado>
+          <Admin
+            path="/productlist"
+            component={ProductoListado}
+          ></Admin>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>
