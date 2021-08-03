@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { detallesProducto } from '../actions/productoActions';
+import { detallesProducto, updateProduct } from '../actions/productoActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
+import { PRODUCT_UPDATE_RESET } from '../constants/productoConstants';
 
 export default function ProductoEditar(props) {
     const productoId = props.match.params.id;
@@ -14,12 +15,22 @@ export default function ProductoEditar(props) {
     const [stock, setStock] = useState('');
     const [editorial, setEditorial] = useState('');
     const [description, setDescription] = useState('');
-
     const productoDetalles = useSelector((state) => state.productoDetalles);
     const { loading, error, producto } = productoDetalles;
+
+    const actualizarProducto = useSelector((state) => state.actualizarProducto);
+    const {
+        loading: loadingUpdate,
+        error: errorUpdate,
+        success: successUpdate,
+    } = actualizarProducto;
     const dispatch = useDispatch();
     useEffect(() => {
-        if (!producto || producto._id !== productoId) {
+        if (successUpdate) {
+            props.history.push('/productlist');
+        }
+        if (!producto || producto._id !== productoId || successUpdate) {
+            dispatch({ type: PRODUCT_UPDATE_RESET });
             dispatch(detallesProducto(productoId));
         } else {
             setName(producto.name);
@@ -31,10 +42,22 @@ export default function ProductoEditar(props) {
             setEditorial(producto.editorial);
             setDescription(producto.description);
         }
-    }, [producto, dispatch, productoId]);
+    }, [producto, dispatch, productoId, successUpdate, props.history]);
     const submitHandler = (e) => {
         e.preventDefault();
-        // TODO: dispatch update product
+        dispatch(
+            updateProduct({
+                _id: productoId,
+                name,
+                pages,
+                category,
+                image,
+                price,
+                stock,
+                editorial,
+                description,
+            })
+        );
     };
     return (
         <div>
@@ -42,6 +65,8 @@ export default function ProductoEditar(props) {
                 <div>
                     <h1>Editar Producto {productoId}</h1>
                 </div>
+                {loadingUpdate && <Loading></Loading>}
+                {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
                 {loading ? (
                     <Loading></Loading>
                 ) : error ? (

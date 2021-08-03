@@ -58,4 +58,28 @@ productoRouter.post(
   })
 );
 
+productoRouter.put(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const productoId = req.params.id;
+    const producto = await Producto.findById(productoId);
+    if (producto) {
+      producto.name = req.body.name;
+      producto.pages = req.body.pages;
+      producto.category = req.body.category;
+      producto.image = req.body.image;
+      producto.price = req.body.price;
+      producto.stock = req.body.stock;
+      producto.editorial = req.body.editorial;
+      producto.description = req.body.description;
+      const updatedProduct = await producto.save();
+      res.send({ message: 'Producto Actualizado!', producto: updatedProduct });
+    } else {
+      res.status(404).send({ message: 'Producto no encontrado' });
+    }
+  })
+);
+
 export default productoRouter;
