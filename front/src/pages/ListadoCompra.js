@@ -16,7 +16,7 @@ export default function ListadoCompra(props) {
     };
     return (
         <div>
-            <h1>Pedidos</h1>
+            <h1>Compras</h1>
             {loading ? (
                 <Loading></Loading>
             ) : error ? (
