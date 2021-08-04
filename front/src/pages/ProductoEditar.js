@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 import { detallesProducto, updateProduct } from '../actions/productoActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
@@ -59,6 +60,30 @@ export default function ProductoEditar(props) {
             })
         );
     };
+    const [loadingUpload, setLoadingUpload] = useState(false);
+    const [errorUpload, setErrorUpload] = useState('');
+
+    const usuarioLogin = useSelector((state) => state.usuarioLogin);
+    const { userInfo } = usuarioLogin;
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0];
+        const bodyFormData = new FormData();
+        bodyFormData.append('image', file);
+        setLoadingUpload(true);
+        try {
+            const { data } = await Axios.post('/api/uploads', bodyFormData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            });
+            setImage(data);
+            setLoadingUpload(false);
+        } catch (error) {
+            setErrorUpload(error.message);
+            setLoadingUpload(false);
+        }
+    };
     return (
         <div>
             <form className="form" onSubmit={submitHandler}>
@@ -112,6 +137,19 @@ export default function ProductoEditar(props) {
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             ></input>
+                        </div>
+                        <div>
+                            <label htmlFor="imageFile">Subir archivo...</label>
+                            <input
+                                type="file"
+                                id="imageFile"
+                                label="Elije una imagen..."
+                                onChange={uploadFileHandler}
+                            ></input>
+                            {loadingUpload && <Loading></Loading>}
+                            {errorUpload && (
+                                <MessageBox variant="danger">{errorUpload}</MessageBox>
+                            )}
                         </div>
                         <div>
                             <label htmlFor="price">Price</label>
