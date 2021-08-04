@@ -1,22 +1,34 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { listOrders } from '../actions/ordenActions';
+import { deleteOrder, listOrders } from '../actions/ordenActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
+import { ORDER_DELETE_RESET } from '../constants/ordenConstants';
 
 export default function ListadoCompra(props) {
     const listadoPedidos = useSelector((state) => state.listadoPedidos);
     const { loading, error, orders } = listadoPedidos;
+    const eliminarPedido = useSelector((state) => state.eliminarPedido);
+    const {
+        loading: loadingDelete,
+        error: errorDelete,
+        success: successDelete,
+    } = eliminarPedido;
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch({ type: ORDER_DELETE_RESET });
         dispatch(listOrders());
-    }, [dispatch]);
+    }, [dispatch, successDelete]);
     const deleteHandler = (order) => {
-        // TODO: delete handler
+        if (window.confirm('Esta seguro de borrar esta compra?')) {
+            dispatch(deleteOrder(order._id));
+        }
     };
     return (
         <div>
             <h1>Compras</h1>
+            {loadingDelete && <Loading></Loading>}
+            {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
             {loading ? (
                 <Loading></Loading>
             ) : error ? (
@@ -60,7 +72,7 @@ export default function ListadoCompra(props) {
                                     <button
                                         type="button"
                                         className="small"
-                                        onclick={() => deleteHandler(order)}
+                                        onClick={() => deleteHandler(order)}
                                     >
                                         Eliminar
                                     </button>
