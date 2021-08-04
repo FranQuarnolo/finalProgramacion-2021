@@ -51,6 +51,7 @@ h1 {
 }
 
 h2 {
+  width: 28rem;
   font-size: 1.6rem;
   padding: 1rem 0;
 }
@@ -224,12 +225,12 @@ img {
 }
 
 img.small {
-  max-width: 5rem;
+  max-width: 4rem;
   width: 100%;
 }
 
 img.medium {
-  max-width: 29rem;
+  max-width: 30rem;
   width: 100%;
 }
 
@@ -245,7 +246,7 @@ img.large {
 }
 
 .card {
-  width: 29rem;
+  width: 30rem;
   border: 0.1rem;
   color: grey;
   border-style: solid;
@@ -256,7 +257,7 @@ img.large {
 
 .card-body {
   padding: 1rem;
-  width: 90%;
+  width: 100%;
 }
 
 .card-body > * {
