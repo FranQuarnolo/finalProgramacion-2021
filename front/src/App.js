@@ -17,6 +17,7 @@ import RealizarPedido from "./pages/RealizarPedido";
 import HistorialCompra from "./pages/HistorialCompra";
 import ProductoListado from './pages/ProductoListado';
 import ProductoEditar from "./pages/ProductoEditar";
+import ListadoCompra from "./pages/ListadoCompra";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -112,6 +113,10 @@ function App() {
           <Admin
             path="/productlist"
             component={ProductoListado}
+          ></Admin>
+           <Admin
+            path="/orderlist"
+            component={ListadoCompra}
           ></Admin>
         </main>
         <footer className="row center">All right reserved ©</footer>
