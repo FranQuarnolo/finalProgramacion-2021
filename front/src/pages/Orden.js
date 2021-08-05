@@ -58,7 +58,7 @@ export default function Orden(props) {
                 }
             }
         }
-    }, [dispatch, order, orderId, sdkReady, successPay, successDeliver]);
+    }, [dispatch, orderId, sdkReady, successPay, successDeliver, order]);
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(order, paymentResult));

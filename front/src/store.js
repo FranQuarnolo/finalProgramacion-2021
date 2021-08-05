@@ -19,6 +19,7 @@ import {
 } from "./reducers/productoReducers";
 import {
     userDetailsReducer,
+    userListReducer,
     userRegisterReducer,
     userSigninReducer,
     userUpdateProfileReducer,
@@ -58,6 +59,7 @@ const reducer = combineReducers({
     listadoPedidos:orderListReducer,
     eliminarPedido: orderDeleteReducer,
     ordenEntrega: orderDeliverReducer,
+    listadoUsuario: userListReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

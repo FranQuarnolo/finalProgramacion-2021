@@ -18,6 +18,7 @@ import HistorialCompra from "./pages/HistorialCompra";
 import ProductoListado from './pages/ProductoListado';
 import ProductoEditar from "./pages/ProductoEditar";
 import ListadoCompra from "./pages/ListadoCompra";
+import ListadoUsuarios from "./pages/ListadoUsuarios";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -118,6 +119,7 @@ function App() {
             path="/orderlist"
             component={ListadoCompra}
           ></Admin>
+          <Admin path="/userlist" component={ListadoUsuarios}></Admin>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>
