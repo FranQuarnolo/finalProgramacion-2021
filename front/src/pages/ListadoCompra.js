@@ -64,7 +64,7 @@ export default function ListadoCompra(props) {
                                         type="button"
                                         className="small"
                                         onClick={() => {
-                                            props.history.push(`/orden/${order._id}`);
+                                            props.history.push(`/order/${order._id}`);
                                         }}
                                     >
                                         Ver Detalles

@@ -4,6 +4,7 @@ import { cartReducer } from "./reducers/carroReducers";
 import {
     orderCreateReducer,
     orderDeleteReducer,
+    orderDeliverReducer,
     orderDetailsReducer,
     orderListReducer,
     orderMineListReducer,
@@ -55,7 +56,8 @@ const reducer = combineReducers({
     actualizarProducto: productUpdateReducer,
     EliminarProducto: productDeleteReducer,
     listadoPedidos:orderListReducer,
-    eliminarPedido: orderDeleteReducer
+    eliminarPedido: orderDeleteReducer,
+    ordenEntrega: orderDeliverReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
