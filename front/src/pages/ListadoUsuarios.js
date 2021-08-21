@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, listUsers } from "../actions/usuarioActions";
 import Loading from "../components/Loading";
 import MessageBox from "../components/MessageBox";
+import { USER_DETAILS_RESET } from "../constants/usuarioConstants";
 
-export default function ListadoUsuarios() {
+export default function ListadoUsuarios(props) {
   const listadoUsuario = useSelector((state) => state.listadoUsuario);
   const { loading, error, users } = listadoUsuario;
 
@@ -18,6 +19,9 @@ export default function ListadoUsuarios() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listUsers());
+    dispatch({
+      type: USER_DETAILS_RESET,
+    });
   }, [dispatch, successDelete]);
   const deleteHandler = (user) => {
     if (window.confirm("Estas seguro?")) {
@@ -59,7 +63,11 @@ export default function ListadoUsuarios() {
                 <td>{user.isSeller ? "SI" : " NO"}</td>
                 <td>{user.isAdmin ? "SI" : "NO"}</td>
                 <td>
-                  <button type="button" className="small">
+                  <button
+                    type="button"
+                    className="small"
+                    onClick={() => props.history.push(`/user/${user._id}/edit`)}
+                  >
                     Editar
                   </button>
                   <button

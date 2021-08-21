@@ -2,23 +2,24 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { signout } from "./actions/usuarioActions";
-import Admin from './components/Admin';
-import Privado from './components/Privado';
+import Admin from "./components/Admin";
+import Privado from "./components/Privado";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Perfil from "./pages/Perfil";
 import ProductoView from "./pages/ProductoView";
 import Carrito from "./pages/Carrito";
-import Orden from './pages/Orden';
+import Orden from "./pages/Orden";
 import DireccionEnvio from "./pages/DireccionEnvio";
-import MetodoPago from './pages/MetodoPago';
+import MetodoPago from "./pages/MetodoPago";
 import RealizarPedido from "./pages/RealizarPedido";
 import HistorialCompra from "./pages/HistorialCompra";
-import ProductoListado from './pages/ProductoListado';
+import ProductoListado from "./pages/ProductoListado";
 import ProductoEditar from "./pages/ProductoEditar";
 import ListadoCompra from "./pages/ListadoCompra";
 import ListadoUsuarios from "./pages/ListadoUsuarios";
+import EditarUsuario from "./pages/EditarUsuario";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -41,7 +42,9 @@ function App() {
           </div>
           <div>
             <Link to="/cart" img>
-              <button id="btn"><img src="./images/icons/cart.png" alt="carrito"></img></button>
+              <button id="btn">
+                <img src="./images/icons/cart.png" alt="carrito"></img>
+              </button>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
@@ -107,19 +110,11 @@ function App() {
           <Route path="/placeorder" component={RealizarPedido}></Route>
           <Route path="/order/:id" component={Orden}></Route>
           <Route path="/orderhistory" component={HistorialCompra}></Route>
-          <Privado
-            path="/profile"
-            component={Perfil}
-          ></Privado>
-          <Admin
-            path="/productlist"
-            component={ProductoListado}
-          ></Admin>
-           <Admin
-            path="/orderlist"
-            component={ListadoCompra}
-          ></Admin>
+          <Privado path="/profile" component={Perfil}></Privado>
+          <Admin path="/productlist" component={ProductoListado}></Admin>
+          <Admin path="/orderlist" component={ListadoCompra}></Admin>
           <Admin path="/userlist" component={ListadoUsuarios}></Admin>
+          <Admin path="/user/:id/edit" component={EditarUsuario}></Admin>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>
