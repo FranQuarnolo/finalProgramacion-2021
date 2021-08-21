@@ -20,6 +20,7 @@ import ProductoEditar from "./pages/ProductoEditar";
 import ListadoCompra from "./pages/ListadoCompra";
 import ListadoUsuarios from "./pages/ListadoUsuarios";
 import EditarUsuario from "./pages/EditarUsuario";
+import RutaVendedor from "./components/RutaVendedor";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -71,6 +72,21 @@ function App() {
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
+            {userInfo && userInfo.isSeller && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Vendedor <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/productlist/seller">Productos</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist/seller">Ordenes</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
@@ -111,10 +127,18 @@ function App() {
           <Route path="/order/:id" component={Orden}></Route>
           <Route path="/orderhistory" component={HistorialCompra}></Route>
           <Privado path="/profile" component={Perfil}></Privado>
-          <Admin path="/productlist" component={ProductoListado}></Admin>
-          <Admin path="/orderlist" component={ListadoCompra}></Admin>
+          <Admin path="/productlist" component={ProductoListado} exact></Admin>
+          <Admin path="/orderlist" component={ListadoCompra} exact></Admin>
           <Admin path="/userlist" component={ListadoUsuarios}></Admin>
           <Admin path="/user/:id/edit" component={EditarUsuario}></Admin>
+          <RutaVendedor
+            path="/productlist/seller"
+            component={ProductoListado}
+          ></RutaVendedor>
+          <RutaVendedor
+            path="/orderlist/seller"
+            component={ListadoCompra}
+          ></RutaVendedor>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>

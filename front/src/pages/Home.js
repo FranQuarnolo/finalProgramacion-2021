@@ -11,7 +11,7 @@ export default function Home() {
   const { loading, error, productos } = listaProductos;
 
   useEffect(() => {
-    dispatch(listarProductos());
+    dispatch(listarProductos({}));
   }, [dispatch]);
 
   return (
