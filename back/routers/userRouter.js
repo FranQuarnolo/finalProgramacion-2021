@@ -38,7 +38,7 @@ userRouter.post(
 );
 
 userRouter.post(
-  '/register',
+  "/register",
   expressAsyncHandler(async (req, res) => {
     const user = new User({
       name: req.body.name,
@@ -57,19 +57,19 @@ userRouter.post(
 );
 
 userRouter.get(
-  '/:id',
+  "/:id",
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
       res.send(user);
     } else {
-      res.status(404).send({ message: 'Usuario no encontrado' });
+      res.status(404).send({ message: "Usuario no encontrado" });
     }
   })
 );
 
 userRouter.put(
-  '/profile',
+  "/profile",
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
@@ -92,7 +92,7 @@ userRouter.put(
 );
 
 userRouter.get(
-  '/',
+  "/",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
@@ -101,5 +101,25 @@ userRouter.get(
   })
 );
 
+userRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      if (user.email === "admin@example.com") {
+        res
+          .status(400)
+          .send({ message: "No puede borrar una cuenta de Administrador" });
+        return;
+      }
+      const deleteUser = await user.remove();
+      res.send({ message: "Usuario Eliminado", user: deleteUser });
+    } else {
+      res.status(404).send({ message: "Usuario no encontrado" });
+    }
+  })
+);
 
 export default userRouter;
