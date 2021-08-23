@@ -2,16 +2,21 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Producto from '../models/productModel.js';
-import { isAdmin, isAuth, isSellerOrAdmin  } from '../utils.js';
+import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const productoRouter = express.Router();
 
 productoRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
+    const name = req.query.name || '';
     const seller = req.query.seller || '';
+    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
     const sellerFilter = seller ? { seller } : {};
-    const products = await Producto.find({ ...sellerFilter });
+    const products = await Producto.find({
+      ...sellerFilter,
+      ...nameFilter,
+    }).populate('seller', 'seller.name seller.logo');
     res.send(products);
   })
 );

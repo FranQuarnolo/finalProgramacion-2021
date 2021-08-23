@@ -89,16 +89,15 @@ button {
   cursor: pointer;
   color: #000;
 }
-#btn{
+#btn {
   width: 4vw;
   height: 5vh;
   padding: 0;
   margin: 0;
   border-style: none;
   background-color: transparent;
-
 }
-#btn img{
+#btn img {
   width: 4vh;
   height: auto;
 }
@@ -174,7 +173,6 @@ header a {
 header a:hover {
   color: #b392a3;
 }
-
 
 a.brand {
   color: white;
@@ -404,4 +402,16 @@ img.large {
 }
 .table button {
   margin: 0 0.2rem;
+}
+
+/* Search */
+.search button {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-right: none;
+  margin-right: 0.5rem;
+}
+.search input {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+  margin-left: 0.5rem;
 }

@@ -21,6 +21,8 @@ import ListadoCompra from "./pages/ListadoCompra";
 import ListadoUsuarios from "./pages/ListadoUsuarios";
 import EditarUsuario from "./pages/EditarUsuario";
 import RutaVendedor from "./components/RutaVendedor";
+import Busqueda from "./components/Busqueda";
+import BusquedaView from "./pages/BusquedaView"
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -40,6 +42,13 @@ function App() {
             <Link className="brand" to="/">
               Comic Zone
             </Link>
+          </div>
+          <div>
+            <Route
+              render={({ history }) => (
+                <Busqueda history={history}></Busqueda>
+              )}
+            ></Route>
           </div>
           <div>
             <Link to="/cart" img>
@@ -139,6 +148,11 @@ function App() {
             path="/orderlist/seller"
             component={ListadoCompra}
           ></RutaVendedor>
+          <Route
+            path="/search/name/:name?"
+            component={BusquedaView}
+            exact
+          ></Route>
         </main>
         <footer className="row center">All right reserved ©</footer>
       </div>
