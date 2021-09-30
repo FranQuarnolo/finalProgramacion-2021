@@ -53,7 +53,7 @@ function App() {
           <div>
             <Link to="/cart" img>
               <button id="btn">
-                CARRITO
+                CARRITO 
                 {/* <img src="./images/icons/cart.png" alt="carrito"></img> */}
               </button>
               {cartItems.length > 0 && (
