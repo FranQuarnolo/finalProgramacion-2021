@@ -53,7 +53,8 @@ function App() {
           <div>
             <Link to="/cart" img>
               <button id="btn">
-                <img src="./images/icons/cart.png" alt="carrito"></img>
+                CARRITO
+                {/* <img src="./images/icons/cart.png" alt="carrito"></img> */}
               </button>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
