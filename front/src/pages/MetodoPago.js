@@ -47,7 +47,7 @@ export default function MetodoPago(props) {
               required
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></input>
-            <label htmlFor="stripe">Efectivo</label>
+            <label htmlFor="stripe">Stripe</label>
           </div>
         </div>
         <div>
