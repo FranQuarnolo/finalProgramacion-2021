@@ -121,7 +121,7 @@ export default function Perfil() {
             </div>
             {user.isSeller && (
               <>
-                <h2>Seller</h2>
+                <h2>Vendedor</h2>
                 <div>
                   <label htmlFor="sellerName">Nombre Vendedor</label>
                   <input
@@ -157,7 +157,7 @@ export default function Perfil() {
             <div>
               <label />
               <button className="primary" type="submit">
-                Actualizar
+                Confirmar!
               </button>
             </div>
           </>

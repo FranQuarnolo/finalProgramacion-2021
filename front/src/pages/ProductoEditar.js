@@ -119,7 +119,7 @@ export default function ProductoEditar(props) {
                             ></input>
                         </div>
                         <div>
-                            <label htmlFor="category">Category</label>
+                            <label htmlFor="category">Categoría</label>
                             <input
                                 id="category"
                                 type="text"
@@ -129,7 +129,7 @@ export default function ProductoEditar(props) {
                             ></input>
                         </div>
                         <div>
-                            <label htmlFor="image">Image</label>
+                            <label htmlFor="image">Imagen/Foto</label>
                             <input
                                 id="image"
                                 type="text"
@@ -152,7 +152,7 @@ export default function ProductoEditar(props) {
                             )}
                         </div>
                         <div>
-                            <label htmlFor="price">Price</label>
+                            <label htmlFor="price">Precio</label>
                             <input
                                 id="price"
                                 type="text"
@@ -162,7 +162,7 @@ export default function ProductoEditar(props) {
                             ></input>
                         </div>
                         <div>
-                            <label htmlFor="stock">Stock</label>
+                            <label htmlFor="stock">Stock/Disponibilidad</label>
                             <input
                                 id="stock"
                                 type="text"
@@ -195,7 +195,7 @@ export default function ProductoEditar(props) {
                         <div>
                             <label></label>
                             <button className="primary" type="submit">
-                                Actualizar
+                                Confirmar!
                             </button>
                         </div>
                     </>
