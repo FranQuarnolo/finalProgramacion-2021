@@ -29,7 +29,7 @@ export default function BusquedaView(props) {
                 <div className="col-1">
                     <h3>Encontrados</h3>
                     <ul>
-                        <li>Category Similares 1</li>
+                        <li>Category Similares: </li>
                     </ul>
                 </div>
                 <div className="col-3">
