@@ -64,7 +64,7 @@ export default function Login(props) {
         <div>
           <label />
           <div>
-            Nuevo cliente?{" "}
+            Eres nuevo?{" "}
             <Link to={`/register?redirect=${redirect}`}>
               Crea tu cuenta!
             </Link>

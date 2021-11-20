@@ -72,7 +72,7 @@ export default function Orden(props) {
         <MessageBox variant="danger">{error}</MessageBox>
     ) : (
         <div>
-            <h1>Numero pedido: {order._id}</h1>
+            <h1>Numero Pedido/orden: {order._id}</h1>
             <div className="row top">
                 <div className="col-2">
                     <ul>
@@ -145,7 +145,7 @@ export default function Orden(props) {
                     <div className="card card-body">
                         <ul>
                             <li>
-                                <h2>Resumen del pedido</h2>
+                                <h2>Resumen del Pedido/orden</h2>
                             </li>
                             <li>
                                 <div className="row">

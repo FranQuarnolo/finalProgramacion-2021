@@ -41,7 +41,7 @@ export default function Registro(props) {
         {loading && <Loading></Loading>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nombre</label>
           <input
             type="text"
             id="name"
@@ -61,7 +61,7 @@ export default function Registro(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             type="password"
             id="password"
@@ -71,7 +71,7 @@ export default function Registro(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirmar Password</label>
+          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
           <input
             type="password"
             id="confirmPassword"
@@ -83,14 +83,14 @@ export default function Registro(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Registrar
+            Registrarse
           </button>
         </div>
         <div>
           <label />
           <div>
             Ya tienes una cuenta?{" "}
-            <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+            <Link to={`/signin?redirect=${redirect}`}>Ingresa!</Link>
           </div>
         </div>
       </form>

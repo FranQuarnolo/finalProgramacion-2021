@@ -22,15 +22,15 @@ export default function BusquedaView(props) {
                 ) : error ? (
                     <MessageBox variant="danger">{error}</MessageBox>
                 ) : (
-                    <div>{productos.length} Resultados</div>
+                    <div>{productos.length} Resultados Encontrados:</div>
                 )}
             </div>
             <div className="row top">
                 <div className="col-1">
-                    <h3>Encontrados</h3>
-                    <ul>
+                    {/* <h3>Encontrados</h3> */}
+                    {/* <ul>
                         <li>Category Similares: </li>
-                    </ul>
+                    </ul> */}
                 </div>
                 <div className="col-3">
                     {loading ? (

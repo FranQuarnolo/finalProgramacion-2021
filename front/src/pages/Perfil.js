@@ -121,7 +121,7 @@ export default function Perfil() {
             </div>
             {user.isSeller && (
               <>
-                <h2>Vendedor</h2>
+                <h2>Perfil de Vendedor</h2>
                 <div>
                   <label htmlFor="sellerName">Nombre Vendedor</label>
                   <input
@@ -130,16 +130,6 @@ export default function Perfil() {
                     placeholder="Nombre"
                     value={sellerName}
                     onChange={(e) => setSellerName(e.target.value)}
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="sellerLogo">Logo</label>
-                  <input
-                    id="sellerLogo"
-                    type="text"
-                    placeholder="Logo"
-                    value={sellerLogo}
-                    onChange={(e) => setSellerLogo(e.target.value)}
                   ></input>
                 </div>
                 <div>

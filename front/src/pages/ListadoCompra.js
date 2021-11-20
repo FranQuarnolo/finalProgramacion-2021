@@ -29,7 +29,7 @@ export default function ListadoCompra(props) {
   };
   return (
     <div>
-      <h1>Compras</h1>
+      <h1>Historial de Pedidos/Ordenes</h1>
       {loadingDelete && <Loading></Loading>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (

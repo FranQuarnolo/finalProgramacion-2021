@@ -70,19 +70,19 @@ function App() {
                     <Link to="/profile">Perfil</Link>
                   </li>
                   <li>
-                    <Link to="/orderhistory">Mis compras</Link>
+                    <Link to="/orderhistory">Mis Ordenes</Link>
                   </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
+                      Desconectar
                     </Link>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin">Ingresar</Link>
             )}
-            {userInfo && userInfo.isSeller && (
+            {/* {userInfo && userInfo.isSeller && (
               <div className="dropdown">
                 <Link to="#admin">
                   Vendedor <i className="fa fa-caret-down"></i>
@@ -96,21 +96,21 @@ function App() {
                   </li>
                 </ul>
               </div>
-            )}
+            )} */}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
-                  Admin <i className="fa fa-caret-down"></i>
+                  Vendedor/Admin <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
-                  <li>
+                  {/* <li>
                     <Link to="/dashboard">Panel</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/productlist">Productos</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist">Compras</Link>
+                    <Link to="/orderlist">Pedidos/Ordenes</Link>
                   </li>
                   <li>
                     <Link to="/userlist">Usuarios</Link>

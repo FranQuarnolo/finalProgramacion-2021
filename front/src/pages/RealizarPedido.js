@@ -92,7 +92,7 @@ export default function RealizarPedido(props) {
           <div className="card card-body">
             <ul>
               <li>
-                <h2>Resumen del pedido</h2>
+                <h2>Resumen del Pedido/orden</h2>
               </li>
               <li>
                 <div className="row">
@@ -129,7 +129,7 @@ export default function RealizarPedido(props) {
                   className="primary block"
                   disabled={cart.cartItems.length === 0}
                 >
-                  Confirmar pedido
+                  Confirmar Pedido/orden
                 </button>
               </li>
               {loading && <Loading></Loading>}
