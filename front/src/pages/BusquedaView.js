@@ -5,22 +5,27 @@ import { listarProductos } from '../actions/productoActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
 import Producto from '../components/Producto';
+import Rating from '../components/Rating';
+import { prices, ratings } from '../utils';
 
 export default function BusquedaView(props) {
-    const { name = 'all', category = 'all' } = useParams();
+    const { name = 'all', category = 'all', min = 0, max = 0, rating = 0 } = useParams();
     const dispatch = useDispatch();
     const listaProductos = useSelector((state) => state.listaProductos);
     const { loading, error, productos } = listaProductos;
     const listadoProductosCategoria = useSelector((state) => state.listadoProductosCategoria);
     const { loading: loadingCategories, errorCategories, categories } = listadoProductosCategoria;
     useEffect(() => {
-        dispatch(listarProductos({ name: name !== 'all' ? name : '', category: category !== 'all' ? category : '' }));
-    }, [category, dispatch, name]);
+        dispatch(listarProductos({ name: name !== 'all' ? name : '', category: category !== 'all' ? category : '', min, max, rating }));
+    }, [category, dispatch, min, max, name, rating]);
 
     const getFilterUrl = (filter) => {
         const filterCategory = filter.category || category;
         const filterName = filter.name || name;
-        return `/search/category/${filterCategory}/name/${filterName}`;
+        const filterRating = filter.rating || rating;
+        const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
+        const filterMax = filter.max || max;
+        return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}`;
     }
     return (
         <div>
@@ -35,24 +40,62 @@ export default function BusquedaView(props) {
             </div>
             <div className="row top">
                 <div className="col-1">
-                    <h3>Categorias encontradas:</h3>
-                    {loadingCategories ? (
-                        <Loading></Loading>
-                    ) : errorCategories ? (
-                        <MessageBox variant="danger">{error}</MessageBox>
-                    ) : (
+                    <h3>Categorias:</h3>
+                    <div>
+                        {loadingCategories ? (
+                            <Loading></Loading>
+                        ) : errorCategories ? (
+                            <MessageBox variant="danger">{error}</MessageBox>
+                        ) : (
+                            <ul>
+                                <li>
+                                    <Link className={'all' === category ? 'active' : ''} to={getFilterUrl({ category: 'all' })}>
+                                        Todas
+                                    </Link>
+                                </li>
+                                {categories.map(c => (
+                                    <li key={c}>
+                                        <Link className={c === category ? 'active' : ''} to={getFilterUrl({ category: c })}>
+                                            {c}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                    <div>
+                        <h3>Precio:</h3>
                         <ul>
-                            {categories.map(c => (
-                                <li key={c}>
-                                    <Link className={c === category ? 'active' : ''} to={getFilterUrl({ category: c })}>
-                                        {c}
+                            {prices.map((p) => (
+                                <li key={p.name}>
+                                    <Link
+                                        to={getFilterUrl({ min: p.min, max: p.max })}
+                                        className={`${p.min}-$${p.max}` === `${min}-${max}` ? 'active' : ''}
+                                    >
+                                        {p.name}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    )}
-
+                    </div>
+                    <div>
+                        <h3>Reviews:</h3>
+                        <ul>
+                            {ratings.map((r) => (
+                                <li key={r.name}>
+                                    <Link
+                                        to={getFilterUrl({ rating: r.rating })}
+                                        className={`${r.rating}` === `${rating}` ? 'active' : ''}
+                                    >
+                                        {r.name}
+                                        <Rating caption={' & up'} rating={r.rating}></Rating>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
+
                 <div className="col-3">
                     {loading ? (
                         <Loading></Loading>

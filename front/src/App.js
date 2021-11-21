@@ -168,6 +168,11 @@ function App() {
             component={BusquedaView}
             exact
           ></Route>
+          <Route
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating"
+            component={BusquedaView}
+            exact
+          ></Route>
         </main>
         <footer className="row center">Locura Magic - All right reserved ©</footer>
       </div>

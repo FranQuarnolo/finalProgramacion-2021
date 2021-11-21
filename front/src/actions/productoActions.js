@@ -20,14 +20,14 @@ import {
   PRODUCT_CATEGORY_LIST_FAIL,
 } from "../constants/productoConstants";
 
-export const listarProductos = ({ seller = '', name = '', category = '' }) => async (
+export const listarProductos = ({ seller = '', name = '', category = '', min = 0, max = 0, rating = 0 }) => async (
   dispatch
 ) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await Axios.get(`/api/productos?seller=${seller}&name=${name}&category=${category}`);
+    const { data } = await Axios.get(`/api/productos?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}`);
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,

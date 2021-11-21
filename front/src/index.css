@@ -449,3 +449,7 @@ img.large {
     font-size: 2rem;
   }
 }
+
+.active {
+  font-weight: bold;
+}
