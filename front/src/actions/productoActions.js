@@ -15,16 +15,19 @@ import {
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_FAIL,
   PRODUCT_DELETE_SUCCESS,
+  PRODUCT_CATEGORY_LIST_SUCCESS,
+  PRODUCT_CATEGORY_LIST_REQUEST,
+  PRODUCT_CATEGORY_LIST_FAIL,
 } from "../constants/productoConstants";
 
-export const listarProductos = ({ seller = '', name = '' }) => async (
+export const listarProductos = ({ seller = '', name = '', category = '' }) => async (
   dispatch
 ) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await Axios.get(`/api/productos?seller=${seller}&name=${name}`);
+    const { data } = await Axios.get(`/api/productos?seller=${seller}&name=${name}&category=${category}`);
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -32,6 +35,26 @@ export const listarProductos = ({ seller = '', name = '' }) => async (
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const listarProductosCategorias = () => async (
+  dispatch
+) => {
+  dispatch({
+    type: PRODUCT_CATEGORY_LIST_REQUEST,
+  });
+  try {
+    const { data } = await Axios.get(`/api/productos/categories`);
+    dispatch({
+      type: PRODUCT_CATEGORY_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_CATEGORY_LIST_FAIL,
       payload: error.message,
     });
   }

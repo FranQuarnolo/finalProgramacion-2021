@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { signout } from "./actions/usuarioActions";
@@ -23,6 +23,7 @@ import EditarUsuario from "./pages/EditarUsuario";
 import RutaVendedor from "./components/RutaVendedor";
 import Busqueda from "./components/Busqueda";
 import BusquedaView from "./pages/BusquedaView"
+import { listarProductosCategorias } from "./actions/productoActions";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -34,6 +35,9 @@ function App() {
   const signoutHandler = () => {
     dispatch(signout());
   };
+  useEffect(() => {
+    dispatch(listarProductosCategorias());
+  }, [dispatch])
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -151,6 +155,16 @@ function App() {
           ></RutaVendedor>
           <Route
             path="/search/name/:name?"
+            component={BusquedaView}
+            exact
+          ></Route>
+          <Route
+            path="/search/category/:category"
+            component={BusquedaView}
+            exact
+          ></Route>
+          <Route
+            path="/search/category/:category/name/:name"
             component={BusquedaView}
             exact
           ></Route>
