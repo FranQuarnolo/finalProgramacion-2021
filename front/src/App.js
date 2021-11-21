@@ -53,8 +53,8 @@ function App() {
           <div>
             <Link to="/cart" img>
               <button id="btn">
-                CARRITO 
-                {/* <img src="./images/icons/cart.png" alt="carrito"></img> */}
+                {/* CARRITO  */}
+                <img src="./images/icons/cart.png" alt="carrito"></img>
               </button>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
@@ -155,7 +155,7 @@ function App() {
             exact
           ></Route>
         </main>
-        <footer className="row center">All right reserved ©</footer>
+        <footer className="row center">Locura Magic - All right reserved ©</footer>
       </div>
     </BrowserRouter>
   );

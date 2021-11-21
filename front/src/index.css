@@ -26,10 +26,15 @@ body {
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
+@media only screen and (max-width: 480px) {
+  .grid-container {
+    grid-template-rows: 15rem 1fr 6rem;
+  }
+}
 
 header {
   grid-area: header;
-  background-color: #3f5678;
+  background-color: #282e3c;
 }
 
 main {
@@ -39,8 +44,10 @@ main {
 
 footer {
   grid-area: footer;
-  background-color: #3f5678;
+  font-size: 2rem;
+  background-color: #282e3c;
   color: #ffffff;
+  bottom: 0;
 }
 
 /* Decoraciones comunes */
@@ -100,10 +107,10 @@ button {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8f8f8;
   cursor: pointer;
-  color: #fff;
+  color: #000;
 }
 #btn {
-  width: 4vw;
+  /* width: 4vw; */
   height: 5vh;
   padding: 0;
   margin: 0;
@@ -148,6 +155,7 @@ button.block:hover {
 
 button.small {
   font-size: 1.2rem;
+  color: #000;
 }
 
 button:disabled {
@@ -187,7 +195,7 @@ header a {
 }
 
 header a:hover {
-  color: #b392a3;
+  color: #fdff00;
 }
 
 a.brand {
@@ -200,9 +208,11 @@ a.brand {
   background-color: #f02020;
   color: #fff;
   border-radius: 50%;
-  padding: 0.2rem 0.7rem;
-  font-size: 1.4rem;
-  margin-left: 0.2rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-left: 0.1rem;
+  margin-top: 1rem;
 }
 
 .row {
@@ -256,6 +266,7 @@ img.medium {
 
 img.large {
   margin-left: 15%;
+  margin-top: 10%;
   width: 70%;
 }
 
@@ -323,7 +334,7 @@ img.large {
   margin: 0;
   margin-top: 0.4rem;
   border-radius: 0.5rem;
-  color: #b392a3;
+  color: #fdff00;
 }
 
 .dropdown:hover .dropdown-content {
@@ -422,12 +433,19 @@ img.large {
 
 /* Search */
 .search button {
-  border-radius: 0 0.5rem 0.5rem 0;
-  border-right: none;
+  height: 4rem;
+  border-radius: 0 1rem 1rem 0;
+  /* border-right: none; */
+  margin-left: 0.2rem;
   margin-right: 0.5rem;
+  border-color: #fdff00;
+  border-width: 0.1rem;
 }
 .search input {
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 1rem 0 0 1rem;
   border-right: none;
   margin-left: 0.5rem;
+  @media screen orientation: landscape {
+    font-size: 2rem;
+  }
 }
