@@ -9,23 +9,24 @@ import Rating from '../components/Rating';
 import { prices, ratings } from '../utils';
 
 export default function BusquedaView(props) {
-    const { name = 'all', category = 'all', min = 0, max = 0, rating = 0 } = useParams();
+    const { name = 'all', category = 'all', min = 0, max = 0, rating = 0, order = 'newest' } = useParams();
     const dispatch = useDispatch();
     const listaProductos = useSelector((state) => state.listaProductos);
     const { loading, error, productos } = listaProductos;
     const listadoProductosCategoria = useSelector((state) => state.listadoProductosCategoria);
     const { loading: loadingCategories, errorCategories, categories } = listadoProductosCategoria;
     useEffect(() => {
-        dispatch(listarProductos({ name: name !== 'all' ? name : '', category: category !== 'all' ? category : '', min, max, rating }));
-    }, [category, dispatch, min, max, name, rating]);
+        dispatch(listarProductos({ name: name !== 'all' ? name : '', category: category !== 'all' ? category : '', min, max, rating, order }));
+    }, [category, dispatch, min, max, name, order, rating]);
 
     const getFilterUrl = (filter) => {
         const filterCategory = filter.category || category;
         const filterName = filter.name || name;
         const filterRating = filter.rating || rating;
+        const sortOrder = filter.order || order;
         const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
-        const filterMax = filter.max || max;
-        return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}`;
+        const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
+        return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}`;
     }
     return (
         <div>
@@ -37,6 +38,20 @@ export default function BusquedaView(props) {
                 ) : (
                     <div>{productos.length} Resultados Encontrados:</div>
                 )}
+                <div>
+                    Filtrar por{' '}
+                    <select
+                        value={order}
+                        onChange={(e) => {
+                            props.history.push(getFilterUrl({ order: e.target.value }));
+                        }}
+                    >
+                        <option value="newest">Nuevos</option>
+                        <option value="lowest">Precio: Menor precio</option>
+                        <option value="highest">Precio: Mayor precio</option>
+                        <option value="toprated">Reviews de Usuarios</option>
+                    </select>
+                </div>
             </div>
             <div className="row top">
                 <div className="col-1">

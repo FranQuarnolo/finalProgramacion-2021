@@ -50,12 +50,13 @@ export default function ProductoView(props) {
                     numReviews={producto.numReviews}
                   ></Rating>
                 </li>
-                <li>Precio: ${producto.price}</li>
-                <li>
+                
+                <li className='descrip'>
                   Descripción:
-                  <p>{producto.description}</p>
+                  <p className='descrip-text'>{producto.description}</p>
                 </li>
-                <li>Paginas: {producto.price}</li>
+                <li>Cant. Paginas: {producto.price}</li>
+                <li className='precio'>Precio: ${producto.price}</li>
               </ul>
             </div>
             <div className="col-1">
