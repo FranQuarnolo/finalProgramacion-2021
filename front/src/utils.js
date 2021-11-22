@@ -5,44 +5,49 @@ export const prices = [
         max: 0,
     },
     {
-        name: `$200 to $500`,
-        min: 200,
-        max: 500,
-    },
-    {
-        name: `$500 to $1000`,
-        min: 500,
+        name: `$0 to $1000`,
+        min: 10,
         max: 1000,
     },
     {
-        name: `$1000 to $5000`,
+        name: `$1000 to $2000`,
         min: 1000,
+        max: 2000,
+    },
+    {
+        name: `$2000 to $5000`,
+        min: 2000,
         max: 5000,
     },
     {
-        name: `$10000 to $20000`,
+        name: `$5000 to $10000`,
+        min: 5000,
+        max: 10000,
+    },
+    {
+        name: `$10000 to Max`,
         min: 10000,
         max: 20000,
     }
 ];
 export const ratings = [
     {
-        name: '4stars & up',
+        name: '4 estrellas o +',
         rating: 4,
     },
 
     {
-        name: '3stars & up',
+        name: '3 estrellas o +',
         rating: 3,
     },
 
     {
-        name: '2stars & up',
+        name: '2 estrellas o +',
         rating: 2,
     },
 
     {
-        name: '1stars & up',
+        name: '1 estrellas o +',
         rating: 1,
     },
 ];

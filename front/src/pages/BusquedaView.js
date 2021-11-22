@@ -103,7 +103,7 @@ export default function BusquedaView(props) {
                                         className={`${r.rating}` === `${rating}` ? 'active' : ''}
                                     >
                                         {r.name}
-                                        <Rating caption={' & up'} rating={r.rating}></Rating>
+                                        <Rating caption={' o más'} rating={r.rating}></Rating>
                                     </Link>
                                 </li>
                             ))}
