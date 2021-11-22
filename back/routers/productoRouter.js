@@ -123,4 +123,38 @@ productoRouter.delete(
   })
 );
 
+
+productoRouter.post(
+  '/:id/reviews',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const productoId = req.params.id;
+    const producto = await Producto.findById(productoId);
+    if (producto) {
+      if (producto.reviews.find((x) => x.name === req.user.name)) {
+        return res
+          .status(400)
+          .send({ message: 'Oye! Ya realizaste una review de este producto!' });
+      }
+      const review = {
+        name: req.user.name,
+        rating: Number(req.body.rating),
+        comment: req.body.comment,
+      };
+      producto.reviews.push(review);
+      producto.numReviews = producto.reviews.length;
+      producto.rating =
+        producto.reviews.reduce((a, c) => c.rating + a, 0) /
+        producto.reviews.length;
+      const updatedProduct = await producto.save();
+      res.status(201).send({
+        message: 'Review Creada!',
+        review: updatedProduct.reviews[updatedProduct.reviews.length - 1],
+      });
+    } else {
+      res.status(404).send({ message: 'Producto No Encontrado' });
+    }
+  })
+);
+
 export default productoRouter;
