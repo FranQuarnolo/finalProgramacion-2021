@@ -19,3 +19,5 @@ Desarrollo del final programacion 3 del instituto IES 4-003
 >
 >**Usuario example paypal:**  [sb-71fsb6961694@personal.example.com](mailto:sb-71fsb6961694@personal.example.com)
 >**Password:** 46*bXNiY
+
+>**GOOGLE_API_KEY=AIzaSyA3H4vsVwUZEhMf-FCJPYFAhS3QAciukIY

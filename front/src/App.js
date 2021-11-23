@@ -24,6 +24,7 @@ import RutaVendedor from "./components/RutaVendedor";
 import Busqueda from "./components/Busqueda";
 import BusquedaView from "./pages/BusquedaView"
 import { listarProductosCategorias } from "./actions/productoActions";
+import MapScreen from "./pages/maps";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -173,6 +174,7 @@ function App() {
             component={BusquedaView}
             exact
           ></Route>
+          <Privado path="/map" component={MapScreen}></Privado>
         </main>
         <footer className="row center">Locura Magic - All right reserved ©</footer>
       </div>
