@@ -5,7 +5,7 @@ import { crearReview, detallesProducto } from "../actions/productoActions";
 import Loading from "../components/Loading";
 import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
-import { PRODUCT_REVIEW_CREATE_SUCCESS } from "../constants/productoConstants";
+import { PRODUCT_REVIEW_CREATE_RESET } from "../constants/productoConstants";
 
 export default function ProductoView(props) {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function ProductoView(props) {
       window.alert("Gracias por tu review!");
       setRating('');
       setComment('');
-      dispatch({type: PRODUCT_REVIEW_CREATE_SUCCESS,});
+      dispatch({type: PRODUCT_REVIEW_CREATE_RESET,});
     }
     dispatch(detallesProducto(productoId));
   }, [dispatch, productoId, successReviewCreate]);
