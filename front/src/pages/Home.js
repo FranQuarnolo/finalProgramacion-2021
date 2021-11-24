@@ -4,15 +4,18 @@ import Loading from "../components/Loading";
 import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
 import { listarProductos } from "../actions/productoActions";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
+  const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
   const listaProductos = useSelector((state) => state.listaProductos);
-  const { loading, error, productos } = listaProductos;
+  const { loading, error, productos, page, pages } = listaProductos;
 
   useEffect(() => {
-    dispatch(listarProductos({}));
-  }, [dispatch]);
+    dispatch(listarProductos({ pageNumber }));
+  }, [dispatch, pageNumber]);
 
   return (
     <div>
@@ -27,6 +30,17 @@ export default function Home() {
           ))}
         </div>
       )}
+      <div className="row center pagination">
+        {[...Array(pages).keys()].map((x) => (
+          <Link
+            className={x + 1 === page ? 'active' : ''}
+            key={x + 1}
+            to={`/pageNumber/${x + 1}`}
+          >
+            {x + 1}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

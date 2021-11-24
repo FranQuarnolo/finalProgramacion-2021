@@ -170,11 +170,23 @@ function App() {
             exact
           ></Route>
           <Route
-            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
             component={BusquedaView}
             exact
           ></Route>
           <Privado path="/map" component={MapScreen}></Privado>
+          <Admin
+            path="/productlist/pageNumber/:pageNumber"
+            component={ProductoListado}
+            exact
+          ></Admin>
+          <Admin
+            path="/orderlist/pageNumber/:pageNumber"
+            component={ListadoCompra}
+            exact
+          ></Admin>
+          <Route path="/pageNumber/:pageNumber" component={Home} exact></Route>
+          <Route path="/orderhistory/pageNumber/:pageNumber" component={HistorialCompra}></Route>
         </main>
         <footer className="row center">Locura Magic - All right reserved ©</footer>
       </div>
